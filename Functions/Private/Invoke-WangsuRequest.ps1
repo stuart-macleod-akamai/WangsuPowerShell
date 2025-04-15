@@ -14,7 +14,7 @@ function Invoke-WangsuRequest {
         $QueryString,
         
         [Parameter()]
-        [string]
+        [hashtable]
         $AdditionalHeaders,
         
         [Parameter()]
@@ -105,19 +105,21 @@ function Invoke-WangsuRequest {
         'uri'                  = $RequestURI
         'method'               = $Method
         'headers'              = $Headers
-        'SkipHttpErrorCheck'   = $true
         'SkipHeaderValidation' = $true
         'Proxy'                = $env:https_proxy
         'ContentType'          = $ContentType
+        'ErrorAction'          = 'Stop'
+    }
+    
+    if ($Body) {
+        $RequestParams.Body = $Body
     }
 
     try {
         $Response = Invoke-RestMethod @RequestParams
     }
     catch {
-        Write-Error "Request to $Path failed"
-        Write-Error $_
-        return
+        throw $_
     }
 
     return $Response

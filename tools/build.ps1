@@ -14,7 +14,7 @@ param(
 )
 
 $ModuleDirectory = "$PSScriptRoot/../"
-$ModuleName = 'ChinaPowerShell'
+$ModuleName = 'Wangsu'
 
 # Clear previously loaded modules.
 if ( (Get-Module $ModuleName) ) {
