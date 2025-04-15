@@ -34,8 +34,9 @@ function Get-WangsuPropertyVersion {
     }
 
     $RequestParams = @{
-        'Path'   = $Path
-        'Method' = 'GET'
+        'Path'         = $Path
+        'Method'       = 'GET'
+        'WangsuRCFile' = $WangsuRCFile
     }
 
     $Response = Invoke-WangsuRequest @RequestParams

@@ -3,14 +3,19 @@ function Deploy-WangsuEdgeHostname {
     Param (
         [Parameter(Mandatory)]
         [string]
-        $EdgeHostname
+        $EdgeHostname,
+
+        [Parameter()]
+        [string]
+        $WangsuRCFile = "~/.wangsurc.json"
     )
 
     $Path = "/api/edge-hostnames/$EdgeHostname/deploy"
 
     $RequestParams = @{
-        'Path'   = $Path
-        'Method' = 'POST'
+        'Path'         = $Path
+        'Method'       = 'POST'
+        'WangsuRCFile' = $WangsuRCFile
     }
 
     $Response = Invoke-WangsuRequest @RequestParams

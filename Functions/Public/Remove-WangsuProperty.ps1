@@ -17,8 +17,9 @@ function Remove-WangsuProperty {
     process {
         $Path = "/api/properties/$PropertyID"
         $RequestParams = @{
-            'Path'   = $Path
-            'Method' = 'DELETE'
+            'Path'         = $Path
+            'Method'       = 'DELETE'
+            'WangsuRCFile' = $WangsuRCFile
         }
     
         $Response = Invoke-WangsuRequest @RequestParams

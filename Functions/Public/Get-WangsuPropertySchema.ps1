@@ -3,14 +3,15 @@ function Get-WangsuPropertySchema {
     Param (
         [Parameter()]
         [string]
-        $PropertyID
+        $WangsuRCFile = "~/.wangsurc.json"
     )
 
     $Path = '/api/properties/schema'
 
     $RequestParams = @{
-        'Path'   = $Path
-        'Method' = 'GET'
+        'Path'         = $Path
+        'Method'       = 'GET'
+        'WangsuRCFile' = $WangsuRCFile
     }
 
     $Response = Invoke-WangsuRequest @RequestParams

@@ -3,7 +3,11 @@ function Get-WangsuEdgeHostname {
     Param (
         [Parameter()]
         [string]
-        $EdgeHostname
+        $EdgeHostname,
+
+        [Parameter()]
+        [string]
+        $WangsuRCFile = "~/.wangsurc.json"
     )
 
     $Path = "/api/edge-hostnames"
@@ -12,8 +16,9 @@ function Get-WangsuEdgeHostname {
     }
 
     $RequestParams = @{
-        'Path'   = $Path
-        'Method' = 'GET'
+        'Path'         = $Path
+        'Method'       = 'GET'
+        'WangsuRCFile' = $WangsuRCFile
     }
 
     $Response = Invoke-WangsuRequest @RequestParams

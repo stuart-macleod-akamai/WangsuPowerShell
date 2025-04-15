@@ -16,7 +16,11 @@ function Deploy-WangsuProperty {
         [Parameter()]
         [ValidateSet('staging', 'production')]
         [string]
-        $Target
+        $Target,
+
+        [Parameter()]
+        [string]
+        $WangsuRCFile = "~/.wangsurc.json"
     )
 
     process {
@@ -33,9 +37,10 @@ function Deploy-WangsuProperty {
         }
     
         $RequestParams = @{
-            'Path'   = $Path
-            'Method' = 'POST'
-            'Body'   = $Body
+            'Path'         = $Path
+            'Method'       = 'POST'
+            'Body'         = $Body
+            'WangsuRCFile' = $WangsuRCFile
         }
     
         $Response = Invoke-WangsuRequest @RequestParams

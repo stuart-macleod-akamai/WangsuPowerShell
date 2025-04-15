@@ -3,7 +3,11 @@ function Get-WangsuPropertyDeployment {
     Param (
         [Parameter()]
         [string]
-        $DeploymentID
+        $DeploymentID,
+
+        [Parameter()]
+        [string]
+        $WangsuRCFile = "~/.wangsurc.json"
     )
 
     $Path = '/api/properties/deployments'
@@ -12,8 +16,9 @@ function Get-WangsuPropertyDeployment {
     }
 
     $RequestParams = @{
-        'Path'   = $Path
-        'Method' = 'GET'
+        'Path'         = $Path
+        'Method'       = 'GET'
+        'WangsuRCFile' = $WangsuRCFile
     }
 
     $Response = Invoke-WangsuRequest @RequestParams
