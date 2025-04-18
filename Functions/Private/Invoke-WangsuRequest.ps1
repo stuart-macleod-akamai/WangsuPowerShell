@@ -26,9 +26,12 @@ function Invoke-WangsuRequest {
     )
 
     $APIHost = 'open.chinanetcenter.com'
-    $ContentType = 'application/json'
+    $ContentType = 'application/json; charset=utf-8'
 
     # Get Credentials
+    if (-not $WangsuRCFile) {
+        $WangsuRCFile = '~/.wangsurc.json'
+    }
     $Credentials = Get-Content -Raw $WangsuRCFile | ConvertFrom-Json
 
     # Parse body
@@ -83,7 +86,6 @@ function Invoke-WangsuRequest {
     $AuthHeader = "CNC-HMAC-SHA256 Credential=$($Credentials.accessKey), SignedHeaders=content-type;host, Signature=$($Signature)"
 
     # -- Construct Headers
-    $ContentType = "application/json"
     $Headers = @{
         'Accept'            = 'application/json'
         'x-cnc-auth-method' = "AKSK"

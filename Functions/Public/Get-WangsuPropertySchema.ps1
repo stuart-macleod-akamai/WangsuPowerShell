@@ -3,7 +3,7 @@ function Get-WangsuPropertySchema {
     Param (
         [Parameter()]
         [string]
-        $WangsuRCFile = "~/.wangsurc.json"
+        $WangsuRCFile
     )
 
     $Path = '/api/properties/schema'

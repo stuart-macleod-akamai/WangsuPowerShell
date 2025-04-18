@@ -15,7 +15,7 @@ function Get-WangsuPropertyVersion {
 
         [Parameter()]
         [string]
-        $WangsuRCFile = "~/.wangsurc.json"
+        $WangsuRCFile
     )
 
     if ($PropertyName) {

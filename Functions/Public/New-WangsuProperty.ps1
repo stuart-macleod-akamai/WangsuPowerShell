@@ -26,7 +26,7 @@ function New-WangsuProperty {
 
         [Parameter()]
         [string]
-        $WangsuRCFile = "~/.wangsurc.json"
+        $WangsuRCFile
     )
 
     $Body = @{

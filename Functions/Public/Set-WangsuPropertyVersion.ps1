@@ -19,7 +19,7 @@ function Set-WangsuPropertyVersion {
 
         [Parameter()]
         [string]
-        $WangsuRCFile = "~/.wangsurc.json"
+        $WangsuRCFile
     )
 
     process {

@@ -50,7 +50,7 @@ function New-WangsuPropertyMigration {
 
         [Parameter()]
         [string]
-        $WangsuRCFile = "~/.wangsurc.json"
+        $WangsuRCFile
     )
 
     if ($Rules -isnot 'String') {

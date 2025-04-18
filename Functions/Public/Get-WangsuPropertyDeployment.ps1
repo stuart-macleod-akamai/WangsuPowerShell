@@ -7,11 +7,11 @@ function Get-WangsuPropertyDeployment {
 
         [Parameter()]
         [string]
-        $WangsuRCFile = "~/.wangsurc.json"
+        $WangsuRCFile
     )
 
     $Path = '/api/properties/deployments'
-    if ($PropertyID) {
+    if ($DeploymentID) {
         $Path = "/api/properties/deployments/$DeploymentID"
     }
 
@@ -22,7 +22,7 @@ function Get-WangsuPropertyDeployment {
     }
 
     $Response = Invoke-WangsuRequest @RequestParams
-    if ($PropertyID) {
+    if ($DeploymentID) {
         return $Response.data
     }
     else {

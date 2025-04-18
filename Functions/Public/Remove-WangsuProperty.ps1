@@ -11,10 +11,20 @@ function Remove-WangsuProperty {
 
         [Parameter()]
         [string]
-        $WangsuRCFile = "~/.wangsurc.json"
+        $WangsuRCFile
     )
 
     process {
+        if ($PropertyName) {
+            $Property = Get-WangsuProperty | Where-Object propertyName -eq $PropertyName
+            if ($Property) {
+                $PropertyID = $Property.propertyId
+            }
+            else {
+                throw "Property $PropertyName not found"
+            }
+        }
+
         $Path = "/api/properties/$PropertyID"
         $RequestParams = @{
             'Path'         = $Path

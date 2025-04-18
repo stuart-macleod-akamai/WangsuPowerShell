@@ -11,7 +11,7 @@ function Get-WangsuProperty {
 
         [Parameter()]
         [string]
-        $WangsuRCFile = "~/.wangsurc.json"
+        $WangsuRCFile
     )
 
     process {

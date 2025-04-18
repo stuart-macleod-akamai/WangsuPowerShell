@@ -33,7 +33,7 @@ function Test-WangsuProperty {
 
         [Parameter()]
         [string]
-        $WangsuRCFile = "~/.wangsurc.json"
+        $WangsuRCFile
     )
 
     if ($PropertyName) {

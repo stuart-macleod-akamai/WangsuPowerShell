@@ -7,7 +7,7 @@ function Deploy-WangsuEdgeHostname {
 
         [Parameter()]
         [string]
-        $WangsuRCFile = "~/.wangsurc.json"
+        $WangsuRCFile
     )
 
     $Path = "/api/edge-hostnames/$EdgeHostname/deploy"
