@@ -1,4 +1,4 @@
-function Deploy-WangsuProperty {
+function Disable-WangsuProperty {
     [CmdletBinding()]
     Param (
         [Parameter(ParameterSetName = 'name')]
@@ -13,7 +13,7 @@ function Deploy-WangsuProperty {
         [int]
         $Version,
 
-        [Parameter()]
+        [Parameter(Mandatory)]
         [ValidateSet('staging', 'production')]
         [string]
         $Target,
@@ -39,7 +39,7 @@ function Deploy-WangsuProperty {
             'target'  = $Target
             'actions' = @(
                 @{
-                    'action'     = 'deploy_property'
+                    'action'     = 'remove_property'
                     'propertyId' = $PropertyID
                     'version'    = $Version
                 }

@@ -19,5 +19,5 @@ function Deploy-WangsuEdgeHostname {
     }
 
     $Response = Invoke-WangsuRequest @RequestParams
-    return $Response.data
+    return $Response
 }

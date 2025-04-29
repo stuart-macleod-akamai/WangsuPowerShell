@@ -14,6 +14,7 @@ function New-WangsuPropertyMigration {
         $ServiceType,
         
         [Parameter(Mandatory)]
+        [string[]]
         $Hostnames,
 
         [Parameter()]
@@ -57,11 +58,15 @@ function New-WangsuPropertyMigration {
         $Rules = $Rules | ConvertTo-Json -Depth 100
     }
 
+    $PostHostnames = @()
+    $Hostnames | ForEach-Object {
+        $PostHostnames += @{ 'hostname' = $_ }
+    }
     $Body = @{
         'propertyName' = $PropertyName
         'akProperty'   = $Rules
         'serviceType'  = $ServiceType
-        'hostnames'    = @($Hostnames)
+        'hostnames'    = $PostHostnames
     }
 
     $AdditionalHeaders = @{}

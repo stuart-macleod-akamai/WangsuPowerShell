@@ -29,6 +29,27 @@ function New-WangsuPropertyVersion {
             }
         }
 
+        # Sanitize
+        $TopLevelSanitizers = 'variables', 'origins'
+        $RuleTypes = 'responsePhase', 'originPhase', 'requestPhase', 'cachePhase', 'connectPhase'
+        
+        foreach ($TopLevelObject in $TopLevelSanitizers) {
+            $Body.$TopLevelObject | ForEach-Object {
+                if ($_.id) {
+                    $_.PSObject.Members.Remove('id')
+                }
+            }
+        }
+
+        foreach ($RuleType in $RuleTypes) {
+            $Body.rules.$RuleType | ForEach-Object {
+                if ($_.id) {
+                    $_.PSObject.Members.Remove('id')
+                }
+            }
+        }
+
+
         $RequestParams = @{
             'Path'         = "/api/properties/$PropertyID/versions"
             'Method'       = 'POST'

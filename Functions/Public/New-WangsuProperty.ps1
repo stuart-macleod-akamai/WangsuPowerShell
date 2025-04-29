@@ -34,8 +34,12 @@ function New-WangsuProperty {
         'rules'        = $Rules
         'serviceType'  = $ServiceType
         'hostnames'    = $Hostnames
-        'origins'      = $Origins
-        'variables'    = $Variables
+    }
+    if ($Origins) {
+        $Body.origins = $Origins
+    }
+    if ($Variables) {
+        $Body.variables = $Variables
     }
 
     $RequestParams = @{

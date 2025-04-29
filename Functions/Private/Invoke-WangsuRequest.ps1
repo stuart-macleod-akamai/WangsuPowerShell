@@ -10,8 +10,8 @@ function Invoke-WangsuRequest {
         $Method = 'GET',
         
         [Parameter()]
-        [string]
-        $QueryString,
+        [hashtable]
+        $QueryParameters,
         
         [Parameter()]
         [hashtable]
@@ -33,6 +33,19 @@ function Invoke-WangsuRequest {
         $WangsuRCFile = '~/.wangsurc.json'
     }
     $Credentials = Get-Content -Raw $WangsuRCFile | ConvertFrom-Json
+
+    # Handle query params
+    # Build QueryNameValueCollection
+    if (-not $QueryParameters) {
+        $QueryParameters = @{}
+    }
+
+    # Convert to string
+    $QueryArray = New-Object -TypeName System.Collections.Generic.List[string]
+    $QueryParameters.Keys | Sort-Object | ForEach-Object {
+        $QueryArray.Add("$_=$($QueryParameters.$_)")
+    }
+    $QueryString = $QueryArray -Join '&'
 
     # Parse body
     if ($Body -and $Body -IsNot 'String') {

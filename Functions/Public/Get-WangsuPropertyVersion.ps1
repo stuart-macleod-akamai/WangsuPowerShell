@@ -10,7 +10,7 @@ function Get-WangsuPropertyVersion {
         $PropertyID,
         
         [Parameter()]
-        [string]
+        [int]
         $Version,
 
         [Parameter()]
